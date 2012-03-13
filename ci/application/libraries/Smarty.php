@@ -57,20 +57,20 @@ class CI_Smarty extends Smarty {
 
 		parent::__construct();
 
-        $this->CI =& get_instance();     
-        
-        if (count($config) > 0) {
-            $this->init($config);
-        }
-
-        //  Register CodeIgniter template resource ci:filename.php
-        $this->register_resource("ci", array(
-                $this, 
-                "ci_get_template", 
-                "ci_get_timestamp", 
-                "ci_get_secure", 
-                "ci_get_trusted"
-        ));        
+		$this->CI =& get_instance();     
+		        
+		if (count($config) > 0) {
+		    $this->init($config);
+		}
+		
+		//  Register CodeIgniter template resource ci:filename.php
+		$this->register_resource("ci", array(
+		        $this, 
+		        "ci_get_template", 
+		        "ci_get_timestamp", 
+		        "ci_get_secure", 
+		        "ci_get_trusted"
+		));        
         
 		log_message('debug', "Smarty Class Initialized");
 	}
