@@ -115,11 +115,11 @@ class CI_Smarty extends Smarty {
      * @param   string   right delimiter char
      * @return  none
      */
-    function set_delimiters($l = '{', $r = '}') {
+    function set_delimiters($left_delimiter = '{', $right_delimiter = '}') {
     	
-        $this->left_delimiter = $l;
+        $this->left_delimiter = $left_delimiter;
         
-        $this->right_delimiter = $r;
+        $this->right_delimiter = $right_delimiter;
     }
 
 	/**
@@ -273,8 +273,8 @@ class CI_Smarty extends Smarty {
      *
      *
      * @access  public
-     * @param   string   Template file name
-     * @return  none
+     * @param   string  Template filename
+     * @return  string	Fixed filename
      */
     function _fix_template_name($template = '') {
 
