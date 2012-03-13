@@ -1,20 +1,36 @@
-#CI_Smarty
+#CI Smarty
 
 ##CodeIgniter Smarty Bridge
 
 ### Features
  
-* Familiar CodeIgniter templating idioms used:
+* Use familiar CodeIgniter templating idioms:
 
-	`$this->smarty->parse('help_template', $data, FALSE);`
+	+ Render a single template: 
+		`$CI->smarty->parse('help_template', $data, FALSE);`
 	
-	`$this->smarty->load('customer_template', 'customer/edit', $data, FALSE);`
+	+ Render and embed a template in another: 
+		`$CI->smarty->load('customer_template', 'customer/edit', $data, FALSE);`
 
-	`$this->smarty->load('customer_template', array(
-		'header' 	=> 	'customer/header',
-		'content'	=>	'customer/edit',
-		'footer'	=>	'customer/footer'
-	), $data, FALSE);`
+	+ Render and embed a set of set of templates: 
+		`$sections = array(
+			'header' 	=> 	'customer/header',
+			'content'	=>	'customer/edit',
+			'footer'	=>	'customer/footer'
+		);`
+		`$CI->smarty->load('customer_template', $sections, $data, FALSE);`
+	
+* PHP Interoperability:
+
+	+ Render an existing view.php file:
+		`$CI->smarty->parse('ci:template.php', $data, FALSE);`
+
+	+ Render a Smarty template with embedded `<?php ... ?>` tags:
+		`$CI->smarty->parse('ci:template.tpl', $data, FALSE);`
+	
+	+ CodeIgniter Form_Helper plugin functions available in Smarty:
+		`{form_open action="customer/add"}`
+		`{form_input data=$customer.name}`
 
 * Declarative setup using config/smarty.php:
 
