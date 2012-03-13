@@ -13,11 +13,7 @@
 		- `$CI->smarty->load('customer_template', 'customer/edit', $data, FALSE);`
 
 	+ Render and embed a set of set of templates: 
-		- `$sections = array(
-			'header' 	=> 	'customer/header',
-			'content'	=>	'customer/edit',
-			'footer'	=>	'customer/footer'
-		);`
+		- `$sections = array('header' => 'customer/header', 'content' => 'customer/edit', 'footer' => 'customer/footer');`
 		- `$CI->smarty->load('customer_template', $sections, $data, FALSE);`
 	
 * PHP Interoperability:
