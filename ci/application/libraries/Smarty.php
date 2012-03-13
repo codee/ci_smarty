@@ -28,20 +28,19 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 ?><?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if (!class_exists('Smarty')) {
-    //  Smarty may already be loaded by the hosting application (such as CiviCRM)
+if (!class_exists('Smarty'))
+{//  Smarty may already be loaded by the hosting application (such as CiviCRM)
     require_once("smarty/Smarty.class.php");
 }
 
 
-class CI_Smarty extends Smarty {
+class CI_Smarty extends Smarty 
+{
     
     var $CI;
     var $default_template = '';
     var $default_region = '';
     var $default_ext = '';
-    var $regions = array();
-    
 
     /**
      *  Constructor
@@ -53,7 +52,8 @@ class CI_Smarty extends Smarty {
      * @param   array
      * @return  none
      */
-	function __construct($config = array()) {
+	function __construct($config = array()) 
+	{
 
 		parent::__construct();
 
@@ -86,7 +86,8 @@ class CI_Smarty extends Smarty {
      * @param   array
      * @return  none
      */
-    function init($config = array()) {
+    function init($config = array()) 
+    {
 
         foreach ($config as $name => $value) {
             
@@ -115,7 +116,8 @@ class CI_Smarty extends Smarty {
      * @param   string   right delimiter char
      * @return  none
      */
-    function set_delimiters($left_delimiter = '{', $right_delimiter = '}') {
+    function set_delimiters($left_delimiter = '{', $right_delimiter = '}') 
+    {
     	
         $this->left_delimiter = $left_delimiter;
         
@@ -125,7 +127,7 @@ class CI_Smarty extends Smarty {
 	/**
 	 *  Parse
      * 
-     *      Render data using a Smarty template
+     *      Render data in a Smarty view
 	 *
 	 *
 	 * @access	public
@@ -134,10 +136,9 @@ class CI_Smarty extends Smarty {
 	 * @param	bool     TRUE will not be sent to browser
 	 * @return	string
 	 */
-	function parse($template = '', $data = array(), $return = FALSE) {
+	function parse($template = '', $data = array(), $return = FALSE) 
+	{
 	    
-        $this->CI->benchmark->mark('smarty_parse_start');
-
         if (is_array($data)) {
             $this->assign($data);
         }
@@ -148,15 +149,13 @@ class CI_Smarty extends Smarty {
             $this->CI->output->set_output($result);
         }
 
-        $this->CI->benchmark->mark('smarty_parse_end');
-        
         return $result;
 	}
     
     /**
      *  Load
      * 
-     *      Parse nested templates 
+     *      Parse and embed a set of views into a master template 
      *
      *
      * @access  public
@@ -177,7 +176,8 @@ class CI_Smarty extends Smarty {
             
             $regions = array();
             
-            foreach ($view as $name => $value) {
+            foreach ($view as $name => $value) 
+            {
                 
                 $regions[$name] = $this->parse($view, NULL. TRUE);
             }
@@ -204,7 +204,8 @@ class CI_Smarty extends Smarty {
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_template ($template, &$source, &$smarty_obj) {
+    function ci_get_template ($template, &$source, &$smarty_obj) 
+    {
         
         $source = $this->CI->load->view($template, $smarty_obj->get_template_vars(), TRUE);
         
@@ -222,7 +223,8 @@ class CI_Smarty extends Smarty {
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_timestamp($template, &$timestamp, &$smarty_obj) {
+    function ci_get_timestamp($template, &$timestamp, &$smarty_obj) 
+    {
         
         $ext = pathinfo($template, PATHINFO_EXTENSION);
         
@@ -245,7 +247,8 @@ class CI_Smarty extends Smarty {
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_secure($template, &$smarty_obj) {
+    function ci_get_secure($template, &$smarty_obj) 
+    {
         
         return TRUE;
     }
@@ -260,7 +263,8 @@ class CI_Smarty extends Smarty {
      * @param   object  this
      * @return  bool    FALSE
      */
-    function ci_get_trusted($template, &$smarty_obj) {
+    function ci_get_trusted($template, &$smarty_obj) 
+    {
 
         return FALSE;
     }    
@@ -276,7 +280,8 @@ class CI_Smarty extends Smarty {
      * @param   string  Template filename
      * @return  string	Fixed filename
      */
-    function _fix_template_name($template = '') {
+    function _fix_template_name($template = '') 
+    {
 
         $template = ($template == '') ? $this->default_template : $template;
                
