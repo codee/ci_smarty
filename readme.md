@@ -10,11 +10,11 @@
 	
 		`$CI->smarty->parse('help_template', $data, FALSE);`
 	
-	+ Render and embed a template in another:
+	+ Render and embed one template in another:
 	 
 		`$CI->smarty->load('customer_template', 'customer/edit', $data, FALSE);`
 
-	+ Render and embed a set of set of templates:
+	+ Render and embed a set templates:
 	
 		`$sections = array('header' => 'customer/header', 'content' => 'customer/edit', 'footer' => 'customer/footer');`
 		`$CI->smarty->load('customer_template', $sections, $data, FALSE);`
