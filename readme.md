@@ -33,11 +33,20 @@
 	
 		`{form_open action="customer/add"}`
 		`{form_input data=$customer.name}`
-
-* Declarative setup using config/smarty.php:
-
-	`$config['template_dir'] = APPPATH . "views/";`
+		
+	+ Include php code from smarty:
 	
+		`{include file='navigation.php'}`
+
+* Easy configuration:
+
+	+ Set Smarty preferences in config/smarty.php
+
+		`$config['template_dir'] = APPPATH . "views/";`
+	
+	+ For convenience, add to your config/autoload.php:
+
+		`$autoload['libraries'] = array(..., 'smarty');`		
 	
 * Compatible CodeIgniter versions:
  + 2.10

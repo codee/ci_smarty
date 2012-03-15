@@ -63,18 +63,15 @@ class CI_Smarty extends Smarty
 		    $this->init($config);
 		}
 		
-		//  Register CodeIgniter template resource ci:filename.php
-		$this->register_resource("ci", array(
+        //  By default, let CodeIgniter handle all files:
+		$this->register_resource($this->default_resource_type, array(
 		        $this, 
-		        "ci_get_template", 
-		        "ci_get_timestamp", 
-		        "ci_get_secure", 
-		        "ci_get_trusted"
+		        "get_template", 
+		        "get_timestamp", 
+		        "get_secure", 
+		        "get_trusted"
 		)); 
                
-        //  By default, let CodeIgniter handle all files:
-        $this->default_resource_type = 'ci';
-        
 		log_message('debug', "Smarty Class Initialized");
 	}
 
@@ -197,7 +194,7 @@ class CI_Smarty extends Smarty
     }
     
     /**
-     *  CI Get Template
+     *  Get Template
      * 
      *  Process php template first
      *
@@ -207,7 +204,7 @@ class CI_Smarty extends Smarty
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_template ($template, &$source, &$smarty_obj) 
+    function get_template ($template, &$source, &$smarty_obj) 
     {
         
         $source = $this->CI->load->view($template, $smarty_obj->get_template_vars(), TRUE);
@@ -216,7 +213,7 @@ class CI_Smarty extends Smarty
     }
     
     /**
-     *  CI Get Timestamp
+     *  Get Timestamp
      * 
      *  Used to determine if recompile is necessary
      *
@@ -226,7 +223,7 @@ class CI_Smarty extends Smarty
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_timestamp($template, &$timestamp, &$smarty_obj) 
+    function get_timestamp($template, &$timestamp, &$smarty_obj) 
     {
         
         $ext = pathinfo($template, PATHINFO_EXTENSION);
@@ -241,7 +238,7 @@ class CI_Smarty extends Smarty
     }
     
     /**
-     *  CI Get Secure
+     *  Get Secure
      * 
      *  Assume all templates are secure
      *
@@ -250,14 +247,14 @@ class CI_Smarty extends Smarty
      * @param   object  this
      * @return  bool    TRUE
      */
-    function ci_get_secure($template, &$smarty_obj) 
+    function get_secure($template, &$smarty_obj) 
     {
         
         return TRUE;
     }
     
     /**
-     *  CI Get Trusted
+     *  Get Trusted
      * 
      *  Not used for templates
      *
@@ -266,7 +263,7 @@ class CI_Smarty extends Smarty
      * @param   object  this
      * @return  bool    FALSE
      */
-    function ci_get_trusted($template, &$smarty_obj) 
+    function get_trusted($template, &$smarty_obj) 
     {
 
         return FALSE;

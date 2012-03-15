@@ -118,11 +118,21 @@ $config['default_ext'] = '.tpl';
 | Region
 |--------------------------------------------------------------------------
 |
-|     
-|  
+| When passing a single view to smarty->load, the default region     
+| is used:
 |
 */
-$config['default_region'] = 'contents';
+$config['default_region'] = 'page_content';
+
+/*
+|--------------------------------------------------------------------------
+| Resource Namespace
+|--------------------------------------------------------------------------
+|
+| Namespace used to hook file resources     
+|
+*/
+$config['default_resource_type'] = 'ci';
 
 /*
 /* End of file smarty.php */
