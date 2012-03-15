@@ -70,7 +70,10 @@ class CI_Smarty extends Smarty
 		        "ci_get_timestamp", 
 		        "ci_get_secure", 
 		        "ci_get_trusted"
-		));        
+		)); 
+               
+        //  By default, let CodeIgniter handle all files:
+        $this->default_resource_type = 'ci';
         
 		log_message('debug', "Smarty Class Initialized");
 	}

@@ -23,11 +23,11 @@
 
 	+ Render an existing view.php file:
 	
-		`$CI->smarty->parse('ci:view.php', $data, FALSE);`
+		`$CI->smarty->parse('view.php', $data, FALSE);`
 
 	+ Render a Smarty template with embedded `<?php ... ?>` tags:
 	
-		`$CI->smarty->parse('ci:template.tpl', $data, FALSE);`
+		`$CI->smarty->parse('template.tpl', $data, FALSE);`
 	
 	+ CodeIgniter Form_Helper plugin exposes helpers in Smarty, such as:
 	
